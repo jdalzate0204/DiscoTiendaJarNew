@@ -54,7 +54,7 @@ public class AdministradorServiceImpl implements IAdministradorService {
             token1.setToken(jwt);
             this.repo.guardar(token1);
             token.setToken(token1.getToken());
-              
+            token.setId(admin.getId());
             return token;
         } else {
             throw new NoAutorizationException("Usuario y/o contrasena incorrecta");
