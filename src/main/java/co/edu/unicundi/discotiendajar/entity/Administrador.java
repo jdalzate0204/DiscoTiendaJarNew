@@ -1,7 +1,9 @@
 package co.edu.unicundi.discotiendajar.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 
 /**
  *
@@ -9,8 +11,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table (name = "administrador", schema = "principal")
-public class Administrador implements Serializable {
+@NamedQueries({
+    @NamedQuery(name="Administrador.Login",query="SELECT a FROM Administrador a WHERE a.usuario= :usuario AND a.contrasena= :contrasena"),
     
+})
+public class Administrador implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -20,14 +26,21 @@ public class Administrador implements Serializable {
     
     @Column(name = "contrasena", nullable = false, length = 30)
     private String contrasena;
+        
+    @OneToOne(mappedBy = "administrador")
+    private Token token; 
+    
 
     public Administrador() {
     }
 
-    public Administrador(String usuario, String contrasena) {
+    public Administrador( String usuario, String contrasena,Token token) {
         this.usuario = usuario;
         this.contrasena = contrasena;
+        this.token=token;
     }
+
+   
 
     public Integer getId() {
         return id;
@@ -52,4 +65,13 @@ public class Administrador implements Serializable {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+  
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
+    }
+    
 }
