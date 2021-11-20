@@ -20,5 +20,4 @@ public class VentaServiceImpl implements IVentaService {
     public List<Pago> obtenerPago() {
         return this.repo.obtenerPago();
     }
-    
 }

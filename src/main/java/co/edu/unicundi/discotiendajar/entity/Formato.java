@@ -11,8 +11,7 @@ import javax.persistence.*;
 @Table (name = "formato", schema = "adicional")
 
 @NamedQueries({
-    @NamedQuery(name = "Formato.Listar", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.Adicional(f.id, f.descripcion)"
-                                                + " FROM Formato f")
+    @NamedQuery(name = "Formato.Listar", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.Adicional(f.id, f.descripcion) FROM Formato f")
 })
 public class Formato implements Serializable {
     

@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @NamedQueries({
     @NamedQuery(name = "GeneroMusical.Listar", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.Adicional(g.id, g.descripcion) "
-                                                        + "FROM GeneroMusical g")
+            + "FROM GeneroMusical g")
 })
 public class GeneroMusical implements Serializable {
     

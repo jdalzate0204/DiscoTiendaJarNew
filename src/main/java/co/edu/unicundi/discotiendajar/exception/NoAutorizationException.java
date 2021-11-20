@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.unicundi.discotiendajar.exception;
 
 /**
@@ -10,7 +5,9 @@ package co.edu.unicundi.discotiendajar.exception;
  * @author ALEJANDRA
  */
 public class NoAutorizationException extends Exception {
-     public NoAutorizationException(String string) {
+    
+    public NoAutorizationException(String string) {
         super(string);
     }
+    
 }

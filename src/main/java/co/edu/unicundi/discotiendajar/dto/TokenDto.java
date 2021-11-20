@@ -17,11 +17,11 @@ public class TokenDto {
     public TokenDto() {
     }
 
-    public TokenDto(Integer id, String token, Administrador administrador,Integer idAdministrador) {
+    public TokenDto(Integer id, String token, Administrador administrador, Integer idAdministrador) {
         this.id = id;
         this.token = token;
         this.administrador = administrador;
-        this.idAdministrador=idAdministrador;
+        this.idAdministrador = idAdministrador;
     }
 
     public Integer getId() {
@@ -55,6 +55,4 @@ public class TokenDto {
     public void setIdAdministrador(Integer idAdministrador) {
         this.idAdministrador = idAdministrador;
     }
-
-    
 }

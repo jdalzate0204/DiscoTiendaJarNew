@@ -1,7 +1,6 @@
 package co.edu.unicundi.discotiendajar.entity;
+
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
@@ -36,7 +35,6 @@ public class Album implements Serializable {
     private String descripcion;
 
     @Column(name = "fecha_lanzamiento", nullable = false)
-    //@Temporal(TemporalType.TIMESTAMP)
     private String fechaLanzamiento;
 
     @Column(name = "precio", nullable = false)

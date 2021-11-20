@@ -1,9 +1,7 @@
 package co.edu.unicundi.discotiendajar.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 
 /**
  *
@@ -11,9 +9,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table (name = "administrador", schema = "principal")
+
 @NamedQueries({
-    @NamedQuery(name="Administrador.Login",query="SELECT a FROM Administrador a WHERE a.usuario= :usuario AND a.contrasena= :contrasena"),
-    
+    @NamedQuery(name = "Administrador.Login", query = "SELECT a FROM Administrador a WHERE a.usuario= :usuario AND a.contrasena= :contrasena")
 })
 public class Administrador implements Serializable {
 
@@ -34,14 +32,12 @@ public class Administrador implements Serializable {
     public Administrador() {
     }
 
-    public Administrador( String usuario, String contrasena,Token token) {
+    public Administrador( String usuario, String contrasena, Token token) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.token=token;
     }
-
-   
-
+    
     public Integer getId() {
         return id;
     }
@@ -73,5 +69,4 @@ public class Administrador implements Serializable {
     public void setToken(Token token) {
         this.token = token;
     }
-    
 }
