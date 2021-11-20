@@ -1,5 +1,6 @@
 package co.edu.unicundi.discotiendajar.service.impl;
 
+import co.edu.unicundi.discotiendajar.entity.Album;
 import co.edu.unicundi.discotiendajar.entity.Pago;
 import co.edu.unicundi.discotiendajar.repository.IVentaRepo;
 import co.edu.unicundi.discotiendajar.service.IVentaService;
@@ -19,5 +20,10 @@ public class VentaServiceImpl implements IVentaService {
     @Override
     public List<Pago> obtenerPago() {
         return this.repo.obtenerPago();
+    }
+
+    @Override
+    public List<Album> listarCatalogo() {
+        return this.repo.listarCatalogo();
     }
 }

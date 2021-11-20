@@ -1,6 +1,6 @@
 package co.edu.unicundi.discotiendajar.repository;
 
-import co.edu.unicundi.discotiendajar.entity.Pago;
+import co.edu.unicundi.discotiendajar.entity.*;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -9,6 +9,7 @@ import javax.ejb.Local;
  * @author acer
  */
 @Local
-public interface IVentaRepo {
+public interface IVentaRepo{
     public List<Pago> obtenerPago();
+    public List<Album> listarCatalogo();
 }

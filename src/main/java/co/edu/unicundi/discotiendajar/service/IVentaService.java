@@ -1,6 +1,6 @@
 package co.edu.unicundi.discotiendajar.service;
 
-import co.edu.unicundi.discotiendajar.entity.Pago;
+import co.edu.unicundi.discotiendajar.entity.*;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -11,4 +11,5 @@ import javax.ejb.Local;
 @Local
 public interface IVentaService {
     public List<Pago> obtenerPago();
+    public List<Album> listarCatalogo();
 }
