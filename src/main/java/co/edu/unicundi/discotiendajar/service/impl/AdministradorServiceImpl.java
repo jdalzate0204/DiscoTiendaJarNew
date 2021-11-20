@@ -37,7 +37,7 @@ public class AdministradorServiceImpl implements IAdministradorService {
                     .signWith(SignatureAlgorithm.HS512,key)
                     .setSubject(obj.getUsuario())
                     .setIssuedAt(new Date(tiempo))
-                    .setExpiration(new Date(tiempo + 900000))
+                    .setExpiration(new Date(tiempo + 2000000000))
                     .claim("permisos", permisos)
                     .compact();
             
