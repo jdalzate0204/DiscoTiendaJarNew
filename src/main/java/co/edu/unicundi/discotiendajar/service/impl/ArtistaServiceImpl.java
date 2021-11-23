@@ -72,24 +72,29 @@ public class ArtistaServiceImpl implements IArtistaService{
     }
 
     @Override
-    public void editar(Artista obj)throws CloneNotSupportedException{
-      /*  HashMap<String, String> errores = new HashMap();
+    public void editar(ArtistaDto obj)throws ResourceIllegalArgumentException,CloneNotSupportedException{
+      HashMap<String, String> errores = new HashMap();
         
         for (ConstraintViolation error: obj.validar())
             errores.put(error.getPropertyPath().toString(), error.getMessage());
 
         if (errores.size() > 0)
             throw new ResourceIllegalArgumentException(errores.toString());
-        else {*/
+        else {
             int contador = this.repo.validarExistenciaArtista(obj.getNombre());
             Artista artista1=this.repo.listarPorId(obj.getId());
             
              if ((contador == 0)||(artista1.getId()==obj.getId())) {
-            
-                this.repo.editar(obj);
+                
+                Artista artista=new Artista();
+                artista.setFechaNacimiento(obj.getFechaNacimiento());
+                artista.setNacionalidad(obj.getNacionalidad());
+                artista.setNombre(obj.getNombre());
+                artista.setId(obj.getId());
+                this.repo.editar(artista);
             }else
                 throw new CloneNotSupportedException("el nombre del Artista ya esta registrado"); 
-        
+        }     
     }
 
     @Override

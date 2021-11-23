@@ -15,7 +15,7 @@ public interface ICancionService {
     public void guardar(CancionDto obj) throws ResourceIllegalArgumentException, CloneNotSupportedException;
     public List<Cancion> listar();
     public Cancion listarPorId(Integer id);
-    public void editar(Cancion obj)throws  CloneNotSupportedException;
+    public void editar(CancionDto obj)throws  ResourceIllegalArgumentException, CloneNotSupportedException;
     public void eliminar(Integer id);
     public List<Formato> obtenerFormato();
     public List<Cancion> listarId(Integer id)throws ResourceNotFoundException;

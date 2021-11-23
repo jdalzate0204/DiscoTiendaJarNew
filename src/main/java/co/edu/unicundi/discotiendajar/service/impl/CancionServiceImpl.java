@@ -72,24 +72,31 @@ public class CancionServiceImpl implements ICancionService {
     }
 
     @Override
-    public void editar(Cancion obj)throws CloneNotSupportedException {
-       /* HashMap<String, String> errores = new HashMap();
+    public void editar(CancionDto obj)throws  ResourceIllegalArgumentException, CloneNotSupportedException {
+        HashMap<String, String> errores = new HashMap();
         
         for (ConstraintViolation error: obj.validar())
             errores.put(error.getPropertyPath().toString(), error.getMessage());
 
         if (errores.size() > 0)
             throw new ResourceIllegalArgumentException(errores.toString());
-        else {*/
+        else {
             int contador = this.repo.validarExistenciaCancion(obj.getNombre());
             Cancion cancion1=this.repo.listarPorId(obj.getId());
             
             if ((contador == 0)||(cancion1.getId()==obj.getId())) {
-
-                this.repo.editar(obj);
+                
+                Cancion cancion = new Cancion();
+                cancion.setNombre(obj.getNombre());
+                cancion.setDescripcion(obj.getDescripcion());
+                cancion.setDuracion(obj.getDuracion());
+                cancion.setColaboraciones(obj.getColaboraciones());
+                cancion.setPrecio(obj.getPrecio());
+                cancion.setId(obj.getId());
+                this.repo.editar(cancion);
             } else
                 throw new CloneNotSupportedException("el nombre de la Canción ya registrada"); 
-        
+        }
     }
 
     @Override

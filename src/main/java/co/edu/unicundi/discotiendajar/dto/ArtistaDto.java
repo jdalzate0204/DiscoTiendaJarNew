@@ -26,10 +26,10 @@ public class ArtistaDto {
     @Pattern(regexp = "^[a-zA-Z_]+( [a-zA-Z_]+)*$", message = "¡Solo se admiten letras!")
     private String nacionalidad;
     
-    @NotNull(message = "idSexo es obligatorio")
+    //@NotNull(message = "idSexo es obligatorio")
     private Integer idSexo;
     
-    @NotNull(message = "idGeneroMusical es obligatorio")
+    //@NotNull(message = "idGeneroMusical es obligatorio")
     private Integer idGeneroMusical;
     
     private String sexo;

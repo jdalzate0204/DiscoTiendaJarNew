@@ -44,7 +44,7 @@ public class AlbumRepoImpl implements IAlbumRepo {
 
     @Override
     public void editar(Album obj) {
-         Query query = em.createNamedQuery("Album.Editar", Album.class);
+        Query query = em.createNamedQuery("Album.Editar", Album.class);
         query.setParameter("nombre", obj.getNombre());
         query.setParameter("imagen", obj.getImagen());
         query.setParameter("descripcion", obj.getDescripcion());

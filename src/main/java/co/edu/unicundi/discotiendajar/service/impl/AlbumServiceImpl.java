@@ -61,23 +61,30 @@ public class AlbumServiceImpl implements IAlbumService {
     }
 
     @Override
-    public void editar(Album obj)throws CloneNotSupportedException {
-        /*HashMap<String, String> errores = new HashMap();
+    public void editar(AlbumDto obj)throws  ResourceIllegalArgumentException, CloneNotSupportedException {
+        HashMap<String, String> errores = new HashMap();
         
         for (ConstraintViolation error: obj.validar())
             errores.put(error.getPropertyPath().toString(), error.getMessage());
 
         if (errores.size() > 0)
             throw new ResourceIllegalArgumentException(errores.toString());
-        else {*/
+        else {
             int contador = this.repo.validarExistenciaAlbum(obj.getNombre());
             Album album1=this.repo.listarPorId(obj.getId());
             if ((contador == 0)||(album1.getId()==obj.getId())){
-               
-                this.repo.editar(obj);
+                
+                Album album = new Album();
+                album.setNombre(obj.getNombre());
+                album.setImagen(obj.getImagen());
+                album.setDescripcion(obj.getDescripcion());
+                album.setFechaLanzamiento(obj.getFechaLanzamiento());
+                album.setPrecio(obj.getPrecio());
+                album.setId(obj.getId());
+                this.repo.editar(album);
             } else
                 throw new CloneNotSupportedException("el nombre del Álbum ya registrado");  
-        
+        }
     }
 
     @Override

@@ -31,10 +31,10 @@ public class CancionDto {
     @Min(value = 2000)
     private Double precio;
 
-    @NotNull(message = "idAlbum es obligatorio")
+    //@NotNull(message = "idAlbum es obligatorio")
     private Integer idAlbum;
     
-    @NotNull(message = "idAlbum es obligatorio")
+    //@NotNull(message = "idAlbum es obligatorio")
     private Integer idFormato;
     
     private String album;
