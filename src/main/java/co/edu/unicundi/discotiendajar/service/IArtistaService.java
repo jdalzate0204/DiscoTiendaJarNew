@@ -3,6 +3,7 @@ package co.edu.unicundi.discotiendajar.service;
 import co.edu.unicundi.discotiendajar.dto.ArtistaDto;
 import co.edu.unicundi.discotiendajar.entity.*;
 import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException;
+import co.edu.unicundi.discotiendajar.view.VistaArtista;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -20,4 +21,5 @@ public interface IArtistaService {
     public List<Sexo> obtenerSexo();
     public List<GeneroMusical> obtenerGenero();
     public List<Artista> listarSelect();
+    public List<VistaArtista> vista();
 }

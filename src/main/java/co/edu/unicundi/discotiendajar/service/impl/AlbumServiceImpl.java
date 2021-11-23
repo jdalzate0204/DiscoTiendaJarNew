@@ -6,6 +6,7 @@ import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException
 import javax.ejb.*;
 import co.edu.unicundi.discotiendajar.repository.IAlbumRepo;
 import co.edu.unicundi.discotiendajar.service.IAlbumService;
+import co.edu.unicundi.discotiendajar.view.VistaAlbum;
 import java.util.*;
 import javax.validation.ConstraintViolation;
 
@@ -95,5 +96,10 @@ public class AlbumServiceImpl implements IAlbumService {
     @Override
     public List<Album> listarSelect() {
         return this.repo.listarSelect();
+    }
+
+    @Override
+    public List<VistaAlbum> vista() {
+        return this.repo.vista();
     }
 }
