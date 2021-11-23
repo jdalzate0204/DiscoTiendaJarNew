@@ -3,6 +3,7 @@ package co.edu.unicundi.discotiendajar.service.impl;
 import co.edu.unicundi.discotiendajar.dto.AlbumDto;
 import co.edu.unicundi.discotiendajar.entity.*;
 import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException;
+import co.edu.unicundi.discotiendajar.exception.ResourceNotFoundException;
 import javax.ejb.*;
 import co.edu.unicundi.discotiendajar.repository.IAlbumRepo;
 import co.edu.unicundi.discotiendajar.service.IAlbumService;
@@ -56,8 +57,12 @@ public class AlbumServiceImpl implements IAlbumService {
     }
 
     @Override
-    public Album listarPorId(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Album> listarPorId(Integer id) throws ResourceNotFoundException{
+         List<Album> album = repo.listarId(id);
+        if (album.size()==1)
+            return album;
+        else
+            throw new ResourceNotFoundException("Album no encontrado");
     }
 
     @Override

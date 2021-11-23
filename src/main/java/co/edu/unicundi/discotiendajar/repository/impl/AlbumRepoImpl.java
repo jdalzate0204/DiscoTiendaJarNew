@@ -38,8 +38,7 @@ public class AlbumRepoImpl implements IAlbumRepo {
 
     @Override
     public Album listarPorId(Integer id) {
-        Album album = em.find(Album.class, id);
-        return album;
+          throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -63,5 +62,12 @@ public class AlbumRepoImpl implements IAlbumRepo {
     public List<Album> listarSelect() {
         TypedQuery<Album> query = em.createNamedQuery("Album.ListarSelect", Album.class);
         return query.getResultList();
+    }
+
+    @Override
+    public List<Album> listarId(Integer id) {
+       TypedQuery<Album> query = em.createNamedQuery("Album.ListarId", Album.class);
+       query.setParameter("id", id);
+       return query.getResultList();
     }
 }

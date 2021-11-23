@@ -13,4 +13,5 @@ public interface ICancionRepo  extends ICrud<Cancion, Integer>{
     public List<Formato> obtenerFormato();
     public int validarExistenciaCancion(String nombre);
     public List<Cancion> listarId(Integer id);
+    public List<Cancion> listarIdCancion(Integer id);
 }

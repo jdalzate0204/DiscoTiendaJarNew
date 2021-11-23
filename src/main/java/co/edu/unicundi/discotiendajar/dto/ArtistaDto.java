@@ -61,6 +61,12 @@ public class ArtistaDto {
         this.idSexo = idSexo;
         this.idGeneroMusical = idGeneroMusical;
     }
+     public ArtistaDto(Integer id, String nombre, String fechaNacimiento, String nacionalidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.nacionalidad = nacionalidad;
+     }
     
     public Integer getId() {
         return id;

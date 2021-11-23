@@ -67,8 +67,13 @@ public class CancionServiceImpl implements ICancionService {
     }
 
     @Override
-    public Cancion listarPorId(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public  List<Cancion> listarPorId(Integer id) throws ResourceNotFoundException{
+       List<Cancion> cancion = this.repo.listarIdCancion(id);
+        if(cancion.size()==1){
+            return cancion;
+        }else{
+           throw new ResourceNotFoundException("Cancion no encontrado");
+        } 
     }
 
     @Override

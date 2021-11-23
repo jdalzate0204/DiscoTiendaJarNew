@@ -19,7 +19,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
             + "(al.id, al.nombre, al.imagen, al.descripcion, al.fechaLanzamiento, al.precio, al.artista.nombre) FROM Album al"),
     @NamedQuery(name = "Album.ListarSelect", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.AlbumDto(a.id, a.nombre) FROM Album a"),
     @NamedQuery(name = "Album.Editar", query = "UPDATE Album "
-+ "SET nombre = :nombre, imagen = :imagen, descripcion = :descripcion, fechaLanzamiento = :fechaLanzamiento,precio=:precio WHERE id = :id")
++ "SET nombre = :nombre, imagen = :imagen, descripcion = :descripcion, fechaLanzamiento = :fechaLanzamiento,precio=:precio WHERE id = :id"),
+    @NamedQuery(name = "Album.ListarId", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.AlbumDto"
+            + "(al.id, al.nombre, al.imagen, al.descripcion, al.fechaLanzamiento, al.precio)  FROM Album al WHERE al.id=:id"),
+    
     
 })
 public class Album implements Serializable {
@@ -63,6 +66,7 @@ public class Album implements Serializable {
         this.cancion = cancion;
     }
 
+    
     public Integer getId() {
         return id;
     }

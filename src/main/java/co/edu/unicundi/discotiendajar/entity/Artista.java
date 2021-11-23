@@ -18,7 +18,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Artista.ListarTodos", query = "SELECT  NEW co.edu.unicundi.discotiendajar.dto.ArtistaDto"
             + "(a.id , a.nombre, a.fechaNacimiento, a.nacionalidad, a.sexo.descripcion,a.generoMusical.descripcion) FROM Artista a"),
          @NamedQuery(name = "Artista.Editar", query = "UPDATE Artista "
-+ "SET nombre = :nombre, fechaNacimiento = :fechaNacimiento, nacionalidad = :nacionalidad  WHERE id = :id")
++ "SET nombre = :nombre, fechaNacimiento = :fechaNacimiento, nacionalidad = :nacionalidad  WHERE id = :id"),
+    @NamedQuery(name = "Artista.ListarId", query = "SELECT  NEW co.edu.unicundi.discotiendajar.dto.ArtistaDto"
+            + "(a.id , a.nombre, a.fechaNacimiento, a.nacionalidad) FROM Artista a WHERE a.id=:id")     
      
 })
 public class Artista implements Serializable {

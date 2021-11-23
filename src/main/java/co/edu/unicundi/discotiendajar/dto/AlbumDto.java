@@ -63,6 +63,14 @@ public class AlbumDto {
         this.precio = precio;
         this.idArtista = idArtista;
     }
+    public AlbumDto(Integer id, String nombre, String imagen, String descripcion, String fechaLanzamiento, Double precio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.imagen = imagen;
+        this.descripcion = descripcion;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.precio = precio;
+    }
 
     public Integer getId() {
         return id;

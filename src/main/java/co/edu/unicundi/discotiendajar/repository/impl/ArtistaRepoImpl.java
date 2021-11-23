@@ -41,8 +41,7 @@ public class ArtistaRepoImpl implements IArtistaRepo {
 
     @Override
     public Artista listarPorId(Integer id) {
-        Artista artista = em.find(Artista.class, id);
-        return artista;
+       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -73,5 +72,12 @@ public class ArtistaRepoImpl implements IArtistaRepo {
     public List<Artista> listarSelect() {
         TypedQuery<Artista> query = em.createNamedQuery("Artista.ListarSelect", Artista.class);
         return query.getResultList();
+    }
+
+    @Override
+    public List<Artista> listarId(Integer id) {
+       TypedQuery<Artista> query = em.createNamedQuery("Artista.ListarId", Artista.class);
+       query.setParameter("id", id);
+       return query.getResultList();
     }
 }

@@ -14,4 +14,5 @@ public interface IArtistaRepo  extends ICrud<Artista, Integer>{
     public List<GeneroMusical> obtenerGenero();
     public int validarExistenciaArtista(String nombre);
     public List<Artista> listarSelect();
+    public List<Artista> listarId(Integer id);
 }

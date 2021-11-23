@@ -3,6 +3,7 @@ package co.edu.unicundi.discotiendajar.service.impl;
 import co.edu.unicundi.discotiendajar.dto.ArtistaDto;
 import co.edu.unicundi.discotiendajar.entity.*;
 import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException;
+import co.edu.unicundi.discotiendajar.exception.ResourceNotFoundException;
 import co.edu.unicundi.discotiendajar.repository.IArtistaRepo;
 import co.edu.unicundi.discotiendajar.service.IArtistaService;
 import java.util.HashMap;
@@ -67,8 +68,12 @@ public class ArtistaServiceImpl implements IArtistaService{
     }
 
     @Override
-    public Artista listarPorId(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Artista> listarPorId(Integer id)throws ResourceNotFoundException {
+        List<Artista> artista = repo.listarId(id);
+        if (artista.size()==1)
+            return artista;
+        else
+            throw new ResourceNotFoundException("Artista no encontrado");
     }
 
     @Override

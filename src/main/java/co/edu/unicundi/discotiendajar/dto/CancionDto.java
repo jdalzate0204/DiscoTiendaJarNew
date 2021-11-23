@@ -64,6 +64,14 @@ public class CancionDto {
         this.idAlbum = idAlbum;
         this.idFormato = idFormato;
     }
+    public CancionDto(Integer id, String nombre, String descripcion, String duracion, String colaboraciones, Double precio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.colaboraciones = colaboraciones;
+        this.precio = precio;
+    }
 
     public Integer getId() {
         return id;
