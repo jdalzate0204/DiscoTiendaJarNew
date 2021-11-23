@@ -6,6 +6,7 @@ import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException
 import co.edu.unicundi.discotiendajar.exception.ResourceNotFoundException;
 import co.edu.unicundi.discotiendajar.repository.IArtistaRepo;
 import co.edu.unicundi.discotiendajar.service.IArtistaService;
+import co.edu.unicundi.discotiendajar.view.VistaArtista;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.*;
@@ -110,5 +111,10 @@ public class ArtistaServiceImpl implements IArtistaService{
     @Override
     public List<Artista> listarSelect() {
         return this.repo.listarSelect();
+    }
+
+    @Override
+    public List<VistaArtista> vista() {
+        return this.repo.vista();
     }
 }

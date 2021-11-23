@@ -4,6 +4,7 @@ import co.edu.unicundi.discotiendajar.entity.Album;
 import java.util.List;
 import javax.persistence.*;
 import co.edu.unicundi.discotiendajar.repository.IAlbumRepo;
+import co.edu.unicundi.discotiendajar.view.VistaAlbum;
 import javax.ejb.Stateless;
 
 /**
@@ -69,5 +70,11 @@ public class AlbumRepoImpl implements IAlbumRepo {
        TypedQuery<Album> query = em.createNamedQuery("Album.ListarId", Album.class);
        query.setParameter("id", id);
        return query.getResultList();
+    }
+
+    @Override
+    public List<VistaAlbum> vista() {
+        TypedQuery<VistaAlbum> query = em.createNamedQuery("VistaAlbum.Listar", VistaAlbum.class);
+        return query.getResultList();
     }
 }

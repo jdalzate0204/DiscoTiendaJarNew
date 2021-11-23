@@ -2,6 +2,7 @@ package co.edu.unicundi.discotiendajar.repository.impl;
 
 import co.edu.unicundi.discotiendajar.entity.*;
 import co.edu.unicundi.discotiendajar.repository.IArtistaRepo;
+import co.edu.unicundi.discotiendajar.view.VistaArtista;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.*;
@@ -79,5 +80,11 @@ public class ArtistaRepoImpl implements IArtistaRepo {
        TypedQuery<Artista> query = em.createNamedQuery("Artista.ListarId", Artista.class);
        query.setParameter("id", id);
        return query.getResultList();
+    }
+    
+    @Override
+    public List<VistaArtista> vista() {
+        TypedQuery<VistaArtista> query = em.createNamedQuery("VistaArtista.Listar", VistaArtista.class);
+        return query.getResultList();
     }
 }
