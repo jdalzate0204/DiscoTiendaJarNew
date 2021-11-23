@@ -12,7 +12,7 @@ public class AlbumDto {
     private Integer id;
     
     @NotNull(message = "nombre es obligatorio") 
-    @Size(min = 5, max = 30, message = "nombre debe estar entre 5 y 20 caracteres")
+    @Size(min = 4, max = 30, message = "nombre debe estar entre 4 y 30 caracteres")
     private String nombre;
     
     @NotNull(message = "imagen es obligatorio")
@@ -29,7 +29,7 @@ public class AlbumDto {
     @Min(value = 10000)
     private Double precio;
     
-    @NotNull(message = "idArtista es obligatorio")
+    //@NotNull(message = "idArtista es obligatorio")
     private Integer idArtista;
     
     private String artista;

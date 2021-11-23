@@ -72,8 +72,24 @@ public class ArtistaServiceImpl implements IArtistaService{
     }
 
     @Override
-    public void editar(Artista obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void editar(Artista obj)throws CloneNotSupportedException{
+      /*  HashMap<String, String> errores = new HashMap();
+        
+        for (ConstraintViolation error: obj.validar())
+            errores.put(error.getPropertyPath().toString(), error.getMessage());
+
+        if (errores.size() > 0)
+            throw new ResourceIllegalArgumentException(errores.toString());
+        else {*/
+            int contador = this.repo.validarExistenciaArtista(obj.getNombre());
+            Artista artista1=this.repo.listarPorId(obj.getId());
+            
+             if ((contador == 0)||(artista1.getId()==obj.getId())) {
+            
+                this.repo.editar(obj);
+            }else
+                throw new CloneNotSupportedException("el nombre del Artista ya esta registrado"); 
+        
     }
 
     @Override

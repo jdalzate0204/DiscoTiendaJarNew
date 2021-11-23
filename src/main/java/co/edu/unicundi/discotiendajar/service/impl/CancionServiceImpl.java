@@ -3,12 +3,14 @@ package co.edu.unicundi.discotiendajar.service.impl;
 import co.edu.unicundi.discotiendajar.dto.CancionDto;
 import co.edu.unicundi.discotiendajar.entity.*;
 import co.edu.unicundi.discotiendajar.exception.ResourceIllegalArgumentException;
+import co.edu.unicundi.discotiendajar.exception.ResourceNotFoundException;
 import co.edu.unicundi.discotiendajar.repository.ICancionRepo;
 import co.edu.unicundi.discotiendajar.service.ICancionService;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.*;
 import javax.validation.ConstraintViolation;
+
 
 /**
  *
@@ -70,12 +72,38 @@ public class CancionServiceImpl implements ICancionService {
     }
 
     @Override
-    public void editar(Cancion obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void editar(Cancion obj)throws CloneNotSupportedException {
+       /* HashMap<String, String> errores = new HashMap();
+        
+        for (ConstraintViolation error: obj.validar())
+            errores.put(error.getPropertyPath().toString(), error.getMessage());
+
+        if (errores.size() > 0)
+            throw new ResourceIllegalArgumentException(errores.toString());
+        else {*/
+            int contador = this.repo.validarExistenciaCancion(obj.getNombre());
+            Cancion cancion1=this.repo.listarPorId(obj.getId());
+            
+            if ((contador == 0)||(cancion1.getId()==obj.getId())) {
+
+                this.repo.editar(obj);
+            } else
+                throw new CloneNotSupportedException("el nombre de la Canción ya registrada"); 
+        
     }
 
     @Override
     public void eliminar(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Cancion> listarId(Integer id) throws ResourceNotFoundException{
+        List<Cancion> cancion = this.repo.listarId(id);
+        if(cancion.size()==1){
+            return cancion;
+        }else{
+           throw new ResourceNotFoundException("Album no encontrado");
+        }   
     }
 }

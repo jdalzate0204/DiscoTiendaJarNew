@@ -38,12 +38,20 @@ public class AlbumRepoImpl implements IAlbumRepo {
 
     @Override
     public Album listarPorId(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Album album = em.find(Album.class, id);
+        return album;
     }
 
     @Override
     public void editar(Album obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Query query = em.createNamedQuery("Album.Editar", Album.class);
+        query.setParameter("nombre", obj.getNombre());
+        query.setParameter("imagen", obj.getImagen());
+        query.setParameter("descripcion", obj.getDescripcion());
+        query.setParameter("fechaLanzamiento", obj.getFechaLanzamiento());
+        query.setParameter("precio", obj.getPrecio());
+        query.setParameter("id", obj.getId());
+        query.executeUpdate();
     }
 
     @Override

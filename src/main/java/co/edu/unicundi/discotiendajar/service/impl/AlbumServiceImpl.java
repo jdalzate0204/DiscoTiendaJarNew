@@ -18,6 +18,7 @@ public class AlbumServiceImpl implements IAlbumService {
 
     @EJB
     public IAlbumRepo repo;
+    Album album1=new Album();
     
     @Override
     public void guardar(AlbumDto obj) throws ResourceIllegalArgumentException, CloneNotSupportedException {        
@@ -60,8 +61,23 @@ public class AlbumServiceImpl implements IAlbumService {
     }
 
     @Override
-    public void editar(Album obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void editar(Album obj)throws CloneNotSupportedException {
+        /*HashMap<String, String> errores = new HashMap();
+        
+        for (ConstraintViolation error: obj.validar())
+            errores.put(error.getPropertyPath().toString(), error.getMessage());
+
+        if (errores.size() > 0)
+            throw new ResourceIllegalArgumentException(errores.toString());
+        else {*/
+            int contador = this.repo.validarExistenciaAlbum(obj.getNombre());
+            Album album1=this.repo.listarPorId(obj.getId());
+            if ((contador == 0)||(album1.getId()==obj.getId())){
+               
+                this.repo.editar(obj);
+            } else
+                throw new CloneNotSupportedException("el nombre del Álbum ya registrado");  
+        
     }
 
     @Override

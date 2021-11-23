@@ -41,12 +41,18 @@ public class ArtistaRepoImpl implements IArtistaRepo {
 
     @Override
     public Artista listarPorId(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Artista artista = em.find(Artista.class, id);
+        return artista;
     }
 
     @Override
     public void editar(Artista obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     Query query = em.createNamedQuery("Artista.Editar", Album.class);
+        query.setParameter("nombre", obj.getNombre());
+        query.setParameter("fechaNacimiento", obj.getFechaNacimiento());
+        query.setParameter("nacionalidad", obj.getNacionalidad());
+        query.setParameter("id", obj.getId());
+        query.executeUpdate();
     }
 
     @Override

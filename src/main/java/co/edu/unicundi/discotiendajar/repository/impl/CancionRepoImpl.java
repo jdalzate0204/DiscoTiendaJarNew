@@ -40,20 +40,36 @@ public class CancionRepoImpl implements ICancionRepo {
     public List<Cancion> listarTodos() {
         TypedQuery<Cancion> query = em.createNamedQuery("Cancion.ListarTodos", Cancion.class);
         return query.getResultList();
+        
     }
 
     @Override
     public Cancion listarPorId(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      Cancion cancion = em.find(Cancion.class, id);
+        return cancion;        
     }
 
     @Override
     public void editar(Cancion obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          Query query = em.createNamedQuery("Cancion.Editar", Album.class);
+        query.setParameter("nombre", obj.getNombre());
+        query.setParameter("descripcion", obj.getDescripcion());
+        query.setParameter("duracion", obj.getDuracion());
+        query.setParameter("colaboraciones", obj.getColaboraciones());
+        query.setParameter("precio", obj.getPrecio());
+        query.setParameter("id", obj.getId());
+        query.executeUpdate();
     }
 
     @Override
     public void eliminar(Cancion obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Cancion> listarId(Integer id) {
+        TypedQuery<Cancion> query = em.createNamedQuery("Cancion.ListarId", Cancion.class);
+        query.setParameter("id", id);
+        return query.getResultList();
     }
 }

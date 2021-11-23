@@ -15,7 +15,7 @@ public interface IArtistaService {
     public void guardar(ArtistaDto obj)throws ResourceIllegalArgumentException,CloneNotSupportedException ;
     public List<Artista> listar();
     public Artista listarPorId(Integer id);
-    public void editar(Artista obj);
+    public void editar(Artista obj)throws CloneNotSupportedException;
     public void eliminar(Integer id);
     public List<Sexo> obtenerSexo();
     public List<GeneroMusical> obtenerGenero();

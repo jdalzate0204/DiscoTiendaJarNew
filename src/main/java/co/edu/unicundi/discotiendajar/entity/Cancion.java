@@ -14,7 +14,11 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "Cancion.ContarNombre", query = "SELECT COUNT(c.nombre) FROM Cancion c WHERE c.nombre = :nombre"),
     @NamedQuery(name = "Cancion.ListarTodos", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CancionDto"
-            + "(c.id, c.nombre, c.descripcion, c.duracion, c.colaboraciones, c.precio, c.album.nombre, c.formato.descripcion) FROM Cancion c")
+            + "(c.id, c.nombre, c.descripcion, c.duracion, c.colaboraciones, c.precio, c.album.nombre, c.formato.descripcion) FROM Cancion c"),
+    @NamedQuery(name = "Cancion.ListarId", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CancionDto"
+            + "(c.id, c.nombre, c.descripcion, c.duracion, c.colaboraciones, c.precio, c.album.nombre, c.formato.descripcion) FROM Cancion c WHERE  c.album.id= :id"),
+    @NamedQuery(name = "Cancion.Editar", query = "UPDATE Cancion "
++ "SET nombre = :nombre, descripcion = :descripcion, duracion = :duracion,colaboraciones = :colaboraciones,precio = :precio WHERE id = :id")
 })
 public class Cancion implements Serializable {
     
