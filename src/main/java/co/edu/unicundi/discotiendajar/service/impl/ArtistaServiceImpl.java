@@ -71,7 +71,7 @@ public class ArtistaServiceImpl implements IArtistaService{
     @Override
     public List<Artista> listarPorId(Integer id)throws ResourceNotFoundException {
         List<Artista> artista = repo.listarId(id);
-        if (artista.size()==1)
+        if (artista != null)
             return artista;
         else
             throw new ResourceNotFoundException("Artista no encontrado");

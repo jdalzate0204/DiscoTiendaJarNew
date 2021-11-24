@@ -16,7 +16,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Artista.ContarNombre", query = "SELECT COUNT(a.nombre) FROM Artista a WHERE a.nombre = :nombre"),
     @NamedQuery(name = "Artista.ListarSelect", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.ArtistaDto(a.id, a.nombre) FROM Artista a"),
     @NamedQuery(name = "Artista.ListarTodos", query = "SELECT  NEW co.edu.unicundi.discotiendajar.dto.ArtistaDto"
-            + "(a.id , a.nombre, a.fechaNacimiento, a.nacionalidad, a.sexo.descripcion,a.generoMusical.descripcion) FROM Artista a"),
+            + "(a.id , a.nombre, a.fechaNacimiento, a.nacionalidad, a.sexo.descripcion,a.generoMusical.descripcion) FROM Artista a ORDER BY a.id"),
          @NamedQuery(name = "Artista.Editar", query = "UPDATE Artista "
 + "SET nombre = :nombre, fechaNacimiento = :fechaNacimiento, nacionalidad = :nacionalidad  WHERE id = :id"),
     @NamedQuery(name = "Artista.ListarId", query = "SELECT  NEW co.edu.unicundi.discotiendajar.dto.ArtistaDto"

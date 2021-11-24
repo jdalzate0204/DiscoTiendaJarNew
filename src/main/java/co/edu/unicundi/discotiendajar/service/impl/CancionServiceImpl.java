@@ -69,7 +69,7 @@ public class CancionServiceImpl implements ICancionService {
     @Override
     public  List<Cancion> listarPorId(Integer id) throws ResourceNotFoundException{
        List<Cancion> cancion = this.repo.listarIdCancion(id);
-        if(cancion.size()==1){
+        if(cancion != null){
             return cancion;
         }else{
            throw new ResourceNotFoundException("Cancion no encontrado");

@@ -60,7 +60,7 @@ public class AlbumServiceImpl implements IAlbumService {
     @Override
     public List<Album> listarPorId(Integer id) throws ResourceNotFoundException{
          List<Album> album = repo.listarId(id);
-        if (album.size()==1)
+        if (album != null)
             
             return album;
         else
