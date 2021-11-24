@@ -18,6 +18,6 @@ public interface ICancionService {
     public void editar(CancionDto obj)throws  ResourceIllegalArgumentException, CloneNotSupportedException;
     public void eliminar(Integer id);
     public List<Formato> obtenerFormato();
-    public List<Cancion> listarId(Integer id)throws ResourceNotFoundException;
+    public List<Cancion> listarCancionIdAlbum(Integer idAlbum)throws ResourceNotFoundException;
    
 }
