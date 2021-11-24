@@ -69,4 +69,9 @@ public class VentaServiceImpl implements IVentaService {
             this.repo.guardarHistorial(venta);
         }
     }
+
+    @Override
+    public void editar(Boolean estado) {
+        this.repo.editarEstado(estado);
+    }
 }

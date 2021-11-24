@@ -46,5 +46,12 @@ public class VentaRepoImpl implements IVentaRepo {
     public void guardarHistorial(Venta obj) {
         this.em.persist(obj);
     }
+
+    @Override
+    public void editarEstado(Boolean estado) {
+        Query query = em.createNamedQuery("Carrito.Editar", Carrito.class);
+        query.setParameter("estado", estado);
+        query.executeUpdate();
+    }
     
 }
