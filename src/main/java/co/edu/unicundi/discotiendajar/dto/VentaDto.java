@@ -1,51 +1,52 @@
-package co.edu.unicundi.discotiendajar.entity;
+package co.edu.unicundi.discotiendajar.dto;
 
-import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.validation.constraints.*;
 
 /**
  *
  * @author acer
  */
-@Entity
-@Table (name = "venta", schema = "tienda")
-public class Venta implements Serializable {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class VentaDto {
     private Integer id;
-
-    @Column(name = "nombre_cliente", nullable = false, length = 30)
-    private String nombreCliente;
-
-    @Column(name = "celular", nullable = false, length = 10)
-    private String celular;
-
-    @Column(name = "correo", nullable = false, length = 50)
-    private String correo;
-
-    @Column(name = "direccion", nullable = false, length = 50)
-    private String direccion;
     
-    @Column(name = "fecha_compra", nullable = false, length = 20)
+    @NotNull(message = "nombreCliente es obligatorio")
+    @Size(min = 3, max = 50, message = "nombreCliente debe estar entre 3 y 50 caracteres")
+    @Pattern(regexp = "^[a-zA-Z_]+( [a-zA-Z_]+)*$", message = "¡Solo se admiten letras!")
+    private String nombreCliente;
+    
+    @NotNull(message = "celular es obligatorio")
+    @Size(min = 10, max = 10, message = "celular debe tener 10 caracteres")
+    @Pattern(regexp = "^\\d+$", message = "¡Solo se admiten numeros!")
+    private String celular;
+    
+    @NotNull (message = "correo es obligatorio")
+    @Size(max = 50, message = "correo no debe superar los 50 caracteres")
+    private String correo;
+    
+    @NotNull (message = "direccion es obligatorio")
+    @Size(max = 50, message = "direccion no debe superar los 50 caracteres")
+    private String direccion;
+
     private String fechaCompra;
     
-    @Column(name = "cantidad_articulos", nullable = false, length = 20)
     private Integer cantidadArticulos;
     
-    @Column(name = "total", nullable = false, length = 20)
     private Double total;
     
-    @OneToOne
-    @JoinColumn(name = "id_pago", nullable = false)
-    private Pago pago;
+    private Integer idPago;
+    
+    private String pago;
 
-    public Venta() {
+    public VentaDto() {
     }
 
-    public Venta(String nombreCliente,  String celular, String correo, String direccion, String fechaCompra, Integer cantidadArticulos, Double total, Pago pago) {
+    public VentaDto(Integer id, String nombreCliente, String celular, String correo, String direccion, String fechaCompra, Integer cantidadArticulos, Double total, Integer idPago, String pago) {
+        this.id = id;
         this.nombreCliente = nombreCliente;
         this.celular = celular;
         this.correo = correo;
@@ -53,6 +54,7 @@ public class Venta implements Serializable {
         this.fechaCompra = fechaCompra;
         this.cantidadArticulos = cantidadArticulos;
         this.total = total;
+        this.idPago = idPago;
         this.pago = pago;
     }
 
@@ -120,13 +122,25 @@ public class Venta implements Serializable {
         this.total = total;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Pago getPago() {
+    public Integer getIdPago() {
+        return idPago;
+    }
+
+    public void setIdPago(Integer idPago) {
+        this.idPago = idPago;
+    }
+
+    public String getPago() {
         return pago;
     }
 
-    public void setPago(Pago pago) {
+    public void setPago(String pago) {
         this.pago = pago;
+    }
+    
+    public Set<ConstraintViolation<VentaDto>> validar(){
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        return validator.validate(this);
     }
 }

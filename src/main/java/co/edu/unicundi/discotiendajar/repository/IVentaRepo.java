@@ -14,4 +14,5 @@ public interface IVentaRepo{
     public List<Album> listarCatalogo();
     public void guardarCarrito(Carrito obj);
     public List<Carrito> listarCarrito();
+    public void guardarHistorial(Venta obj);
 }

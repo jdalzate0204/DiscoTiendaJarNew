@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table (name = "carrito", schema = "tienda")
 @NamedQueries({
-    @NamedQuery(name = "Carrito.Select", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CarritoDto (COUNT(c.cancion),c.album, SUM(c.precio)) FROM Carrito c WHERE c.estado=false GROUP BY c.album")    
+    @NamedQuery(name = "Carrito.Select", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CarritoDto(COUNT(c.cancion),c.album, SUM(c.precio)) FROM Carrito c WHERE c.estado=false GROUP BY c.album")    
 })
 public class Carrito implements Serializable {
     
