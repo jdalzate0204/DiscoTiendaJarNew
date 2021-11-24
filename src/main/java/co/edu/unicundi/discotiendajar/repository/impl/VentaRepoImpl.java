@@ -34,5 +34,11 @@ public class VentaRepoImpl implements IVentaRepo {
     public void guardarCarrito(Carrito obj) {
         this.em.persist(obj);
     }
+
+    @Override
+    public List<Carrito> listarCarrito() {
+        TypedQuery<Carrito> query=em.createNamedQuery("Carrito.Select",Carrito.class);
+        return query.getResultList();
+    }
     
 }

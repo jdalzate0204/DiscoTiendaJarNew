@@ -32,4 +32,9 @@ public class VentaServiceImpl implements IVentaService {
     public void guardarCarrito(Carrito obj) {
         this.repo.guardarCarrito(obj);
     }
+
+    @Override
+    public List<Carrito> listarCarrito() {
+        return this.repo.listarCarrito();
+    }
 }
