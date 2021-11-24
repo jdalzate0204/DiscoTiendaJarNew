@@ -12,4 +12,5 @@ import javax.ejb.Local;
 public interface IVentaService {
     public List<Pago> obtenerPago();
     public List<Album> listarCatalogo();
+    public void guardarCarrito(Carrito obj);
 }

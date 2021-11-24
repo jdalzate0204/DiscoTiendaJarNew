@@ -67,9 +67,9 @@ public class CancionRepoImpl implements ICancionRepo {
     }
 
     @Override
-    public List<Cancion> listarCancionIdAlbum(Integer idAlbum) {
-        TypedQuery<Cancion> query = em.createNamedQuery("Cancion.ListarId", Cancion.class);
-        query.setParameter("id", idAlbum);
+    public List<Cancion> listarCancionIdCatalogo(Integer id) {
+        TypedQuery<Cancion> query = em.createNamedQuery("Cancion.ListarIdCatalogo", Cancion.class);
+        query.setParameter("id", id);
         return query.getResultList();
     }
 

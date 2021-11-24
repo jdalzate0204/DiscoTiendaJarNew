@@ -1,6 +1,7 @@
 package co.edu.unicundi.discotiendajar.repository.impl;
 
 import co.edu.unicundi.discotiendajar.entity.Album;
+import co.edu.unicundi.discotiendajar.entity.Carrito;
 import co.edu.unicundi.discotiendajar.entity.Pago;
 import co.edu.unicundi.discotiendajar.repository.IVentaRepo;
 import java.util.List;
@@ -27,6 +28,11 @@ public class VentaRepoImpl implements IVentaRepo {
     public List<Album> listarCatalogo() {
         TypedQuery<Album> query = em.createNamedQuery("Album.ListarTodos", Album.class);
         return query.getResultList();
+    }
+
+    @Override
+    public void guardarCarrito(Carrito obj) {
+        this.em.persist(obj);
     }
     
 }

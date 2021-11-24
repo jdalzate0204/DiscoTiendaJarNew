@@ -12,7 +12,7 @@ import javax.ejb.Local;
 public interface ICancionRepo  extends ICrud<Cancion, Integer>{
     public List<Formato> obtenerFormato();
     public int validarExistenciaCancion(String nombre);
-    public List<Cancion> listarCancionIdAlbum(Integer idAlbum);
+    public List<Cancion> listarCancionIdCatalogo(Integer id);
     public List<Cancion> listarIdCancion(Integer id);
     public List<Cancion> listarSelect(Integer id);
 }

@@ -1,6 +1,7 @@
 package co.edu.unicundi.discotiendajar.service.impl;
 
 import co.edu.unicundi.discotiendajar.entity.Album;
+import co.edu.unicundi.discotiendajar.entity.Carrito;
 import co.edu.unicundi.discotiendajar.entity.Pago;
 import co.edu.unicundi.discotiendajar.repository.IVentaRepo;
 import co.edu.unicundi.discotiendajar.service.IVentaService;
@@ -25,5 +26,10 @@ public class VentaServiceImpl implements IVentaService {
     @Override
     public List<Album> listarCatalogo() {
         return this.repo.listarCatalogo();
+    }
+
+    @Override
+    public void guardarCarrito(Carrito obj) {
+        this.repo.guardarCarrito(obj);
     }
 }

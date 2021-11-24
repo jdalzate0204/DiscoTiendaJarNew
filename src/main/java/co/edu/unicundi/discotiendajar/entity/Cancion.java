@@ -2,6 +2,7 @@ package co.edu.unicundi.discotiendajar.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
@@ -16,8 +17,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Cancion.ListarTodos", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CancionDto"
             + "(c.id, c.nombre, c.descripcion, c.duracion, c.colaboraciones, c.precio, c.album.nombre, c.formato.descripcion) FROM Cancion c ORDER BY c.id"),
     @NamedQuery(name = "Cancion.ListarSelect", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CancionDto(c.id, c.nombre) FROM Cancion c WHERE  c.album.id= :id"),
-    @NamedQuery(name = "Cancion.ListarId", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CancionDto"
-            + "(c.id, c.nombre, c.descripcion, c.duracion, c.colaboraciones, c.precio, c.album.nombre, c.formato.descripcion) FROM Cancion c WHERE  c.album.id= :id"),
+    @NamedQuery(name = "Cancion.ListarIdCatalogo", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CancionDto"
+            + "(c.id, c.nombre, c.descripcion, c.duracion, c.colaboraciones, c.precio, c.album.nombre, c.formato.descripcion) FROM Cancion c WHERE  c.id= :id"),
     @NamedQuery(name = "Cancion.Editar", query = "UPDATE Cancion "
 + "SET nombre = :nombre, descripcion = :descripcion, duracion = :duracion,colaboraciones = :colaboraciones,precio = :precio WHERE id = :id"),
     @NamedQuery(name = "Cancion.ListarPorId", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.CancionDto"
@@ -113,7 +114,7 @@ public class Cancion implements Serializable {
         this.precio = precio;
     }
 
-    //@XmlTransient
+    @XmlTransient
     @JsonIgnore
     public Album getAlbum() {
         return album;
@@ -123,7 +124,7 @@ public class Cancion implements Serializable {
         this.album = album;
     }
 
-    //@XmlTransient
+    @XmlTransient
     @JsonIgnore
     public Formato getFormato() {
         return formato;
