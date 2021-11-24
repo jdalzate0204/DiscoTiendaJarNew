@@ -42,7 +42,9 @@ public class ArtistaRepoImpl implements IArtistaRepo {
 
     @Override
     public Artista listarPorId(Integer id) {
-       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        Artista artista = em.find(Artista.class, id);
+        return artista;
     }
 
     @Override
@@ -57,7 +59,7 @@ public class ArtistaRepoImpl implements IArtistaRepo {
 
     @Override
     public void eliminar(Artista obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     
     }    
 
     @Override

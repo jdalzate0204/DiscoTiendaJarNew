@@ -61,6 +61,7 @@ public class AlbumServiceImpl implements IAlbumService {
     public List<Album> listarPorId(Integer id) throws ResourceNotFoundException{
          List<Album> album = repo.listarId(id);
         if (album.size()==1)
+            
             return album;
         else
             throw new ResourceNotFoundException("Album no encontrado");
