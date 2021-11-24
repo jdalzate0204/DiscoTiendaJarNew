@@ -19,5 +19,6 @@ public interface ICancionService {
     public void eliminar(Integer id);
     public List<Formato> obtenerFormato();
     public List<Cancion> listarCancionIdAlbum(Integer idAlbum)throws ResourceNotFoundException;
+    public List<Cancion> listarSelect(Integer id)throws ResourceNotFoundException;
    
 }

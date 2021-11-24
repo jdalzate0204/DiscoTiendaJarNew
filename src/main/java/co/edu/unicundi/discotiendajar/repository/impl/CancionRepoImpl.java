@@ -79,4 +79,11 @@ public class CancionRepoImpl implements ICancionRepo {
         query.setParameter("id", id);
         return query.getResultList();
     }
+
+    @Override
+    public List<Cancion> listarSelect(Integer id) {
+       TypedQuery<Cancion> query = em.createNamedQuery("Cancion.ListarSelect", Cancion.class);
+       query.setParameter("id", id);
+       return query.getResultList();
+    }
 }

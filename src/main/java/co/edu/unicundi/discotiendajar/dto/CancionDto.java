@@ -72,6 +72,11 @@ public class CancionDto {
         this.colaboraciones = colaboraciones;
         this.precio = precio;
     }
+    public CancionDto(Integer id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
 
     public Integer getId() {
         return id;
