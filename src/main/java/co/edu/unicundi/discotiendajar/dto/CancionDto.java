@@ -24,7 +24,6 @@ public class CancionDto {
     @Pattern(regexp = "^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$", message = "¡Ingrese el formato 00:00:00!")
     private String duracion;
     
-    @NotNull(message = "colaboraciones es obligatorio")
     private String colaboraciones;
     
     @NotNull(message = "precio es obligatorio")
