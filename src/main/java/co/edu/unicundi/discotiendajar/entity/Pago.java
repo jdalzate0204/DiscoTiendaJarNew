@@ -2,6 +2,7 @@ package co.edu.unicundi.discotiendajar.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -48,7 +49,9 @@ public class Pago implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+    
+    //@XmlTransient
+    @JsonIgnore
     public Venta getVenta() {
         return venta;
     }

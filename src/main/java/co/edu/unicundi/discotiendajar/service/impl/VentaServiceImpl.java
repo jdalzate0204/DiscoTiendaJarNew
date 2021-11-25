@@ -74,4 +74,14 @@ public class VentaServiceImpl implements IVentaService {
     public void editar(Boolean estado) {
         this.repo.editarEstado(estado);
     }
+
+    @Override
+    public Pago listarPagoId(Integer id) {
+        return this.repo.listarPagoId(id);
+    }
+
+    @Override
+    public List<Venta> listarHistorial() {
+        return this.repo.listarHistorial();
+    }
 }

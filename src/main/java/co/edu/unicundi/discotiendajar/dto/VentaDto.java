@@ -58,6 +58,18 @@ public class VentaDto {
         this.pago = pago;
     }
 
+    public VentaDto(Integer id, String nombreCliente, String celular, String correo, String direccion, String fechaCompra, Integer cantidadArticulos, Double total, String pago) {
+        this.id = id;
+        this.nombreCliente = nombreCliente;
+        this.celular = celular;
+        this.correo = correo;
+        this.direccion = direccion;
+        this.fechaCompra = fechaCompra;
+        this.cantidadArticulos = cantidadArticulos;
+        this.total = total;
+        this.pago = pago;
+    }
+
     public Integer getId() {
         return id;
     }

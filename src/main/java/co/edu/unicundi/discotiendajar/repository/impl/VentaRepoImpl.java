@@ -53,5 +53,16 @@ public class VentaRepoImpl implements IVentaRepo {
         query.setParameter("estado", estado);
         query.executeUpdate();
     }
+
+    @Override
+    public Pago listarPagoId(Integer id) {
+        return this.em.find(Pago.class, id);
+    }
+
+    @Override
+    public List<Venta> listarHistorial() {
+        TypedQuery<Venta> query = em.createNamedQuery("Ventas.ListarHistorial", Venta.class);
+        return query.getResultList();
+    }
     
 }

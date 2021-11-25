@@ -16,4 +16,6 @@ public interface IVentaRepo{
     public List<Carrito> listarCarrito();
     public void guardarHistorial(Venta obj);
     public void editarEstado(Boolean estado);
+    public Pago listarPagoId(Integer id);
+    public List<Venta> listarHistorial();
 }

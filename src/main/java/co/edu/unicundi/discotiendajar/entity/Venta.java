@@ -11,6 +11,12 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 @Entity
 @Table (name = "venta", schema = "tienda")
+
+@NamedQueries({
+    @NamedQuery(name = "Ventas.ListarHistorial", query = "SELECT NEW co.edu.unicundi.discotiendajar.dto.VentaDto "
+            + "(v.id, v.nombreCliente, v.celular, v.correo, v.direccion, v.fechaCompra, v.cantidadArticulos, v.total, v.pago.descripcion) "
+            + "FROM Venta v ORDER BY v.id")
+})
 public class Venta implements Serializable {
     
     @Id

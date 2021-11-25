@@ -17,5 +17,7 @@ public interface IVentaService {
     public void guardarCarrito(Carrito obj);
     public List<Carrito> listarCarrito();
     public void guardarHistorial(VentaDto obj) throws ResourceIllegalArgumentException;
-     public void editar(Boolean estado);
+    public void editar(Boolean estado);
+    public Pago listarPagoId(Integer id);
+    public List<Venta> listarHistorial();
 }
